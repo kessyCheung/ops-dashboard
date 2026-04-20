@@ -832,7 +832,7 @@ function renderTodayBanner() {
       const actionText = t.nextAction ? esc(t.nextAction) : '<span style="opacity:0.5;font-style:italic;">（未設定下一步）</span>';
       html += `<div style="margin-bottom:5px;${t.done?'opacity:0.7;':''}">
         <div style="font-size:12px;font-weight:700;${t.done?'text-decoration:line-through;':''}">${prefix}${esc(t.name)}</div>
-        <div style="margin-left:16px;font-size:11px;opacity:0.9;">${dlLabel} — ${t.done ? (t.result ? esc(t.result) : '已完成') : actionText}</div>
+        <div style="margin-left:16px;font-size:11px;opacity:0.9;">${dlLabel} — ${actionText}</div>
       </div>`;
     });
     html += '</div>';
