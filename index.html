@@ -430,42 +430,42 @@ const FREQ_GROUP_ORDER = ['daily','every2days','weekly','monthly','bimonthly','q
 function notionLink(path) { return path.startsWith('/') ? NOTION_BASE + path.replace(/^\//, '').split('?')[0] : path; }
 
 const DEFAULT_TASKS = [
-  // Daily
-  { name:'維持辦公空間氛圍', how:'播放公區黑膠機音樂、點精油機或香薰蠟燭', freq:'daily', dom:null, last:'', owner:'', note:'於晚上6點', link:'', start:'2026-01-01' },
-  // Every 2 days
-  { name:'補充庶務備品及福利', how:'檢查零食車與冰箱的零食飲料，評估消耗速度酌量補充。洗手間的衛生紙確保有備用在旁邊，並確認辦公室的酒精充足', freq:'every2days', dom:null, last:'', owner:'', note:'酒精噴灑瓶配置：白色吧台2瓶 編輯室1瓶 會議室1瓶 Joey&Rosie辦公室2瓶', link:'', start:'2026-01-01' },
-  { name:'清空除濕機水箱', how:'下班時倒掉水箱裡的水，如有水跡就請清潔人員清洗', freq:'every2days', dom:null, last:'', owner:'', note:'如見滿水應即時倒掉', link:'', start:'2026-01-01' },
-  { name:'公區辦公室植物澆水', how:'下班時澆水至表面濕潤（需灌滿植物根部），確保室內花盤底部無積水', freq:'every2days', dom:null, last:'', owner:'', note:'', link:'', start:'2026-01-01' },
-  { name:'咖啡機清潔', how:'請清潔人員每天清空回收盒與滴水盤，FO確認移除已使用膠囊，回收盒與滴水盤乾淨無跡', freq:'every2days', dom:null, last:'', owner:'', note:'', link:'', start:'2026-01-01' },
-  // Weekly
-  { name:'檢查投影設備', how:'確認公區與Joey房間投影機投影範圍恰當', freq:'weekly', dom:null, last:'', owner:'', note:'詳見投影機使用方法', link:notionLink('/9b199b917c9d4f8c8ddc633b66bfd0ca'), start:'2026-01-06' },
-  { name:'黑膠機唱針保養', how:'搭配唱針清潔液，將少量清潔液滴在刷子上清理', freq:'weekly', dom:null, last:'', owner:'', note:'待買唱針清潔劑', link:'https://www.tableking.com.tw/collections/vinyl-clean/products/v400501', start:'2026-01-06' },
-  // Monthly 1號
-  { name:'房租代扣繳費', how:'', freq:'monthly', dom:1, last:'', owner:'', note:'每月一號', link:'', start:'2026-01-01' },
+  // Daily — office
+  { name:'維持辦公空間氛圍', how:'播放公區黑膠機音樂、點精油機或香薰蠟燭', freq:'daily', dom:null, last:'', owner:'', note:'於晚上6點', link:'', start:'2026-01-01', cat:'office' },
+  // Every 2 days — office
+  { name:'補充庶務備品及福利', how:'檢查零食車與冰箱的零食飲料，評估消耗速度酌量補充。洗手間的衛生紙確保有備用在旁邊，並確認辦公室的酒精充足', freq:'every2days', dom:null, last:'', owner:'', note:'酒精噴灑瓶配置：白色吧台2瓶 編輯室1瓶 會議室1瓶 Joey&Rosie辦公室2瓶', link:'', start:'2026-01-01', cat:'office' },
+  { name:'清空除濕機水箱', how:'下班時倒掉水箱裡的水，如有水跡就請清潔人員清洗', freq:'every2days', dom:null, last:'', owner:'', note:'如見滿水應即時倒掉', link:'', start:'2026-01-01', cat:'office' },
+  { name:'公區辦公室植物澆水', how:'下班時澆水至表面濕潤（需灌滿植物根部），確保室內花盤底部無積水', freq:'every2days', dom:null, last:'', owner:'', note:'', link:'', start:'2026-01-01', cat:'office' },
+  { name:'咖啡機清潔', how:'請清潔人員每天清空回收盒與滴水盤，FO確認移除已使用膠囊，回收盒與滴水盤乾淨無跡', freq:'every2days', dom:null, last:'', owner:'', note:'', link:'', start:'2026-01-01', cat:'office' },
+  // Weekly — office
+  { name:'檢查投影設備', how:'確認公區與Joey房間投影機投影範圍恰當', freq:'weekly', dom:null, last:'', owner:'', note:'詳見投影機使用方法', link:notionLink('/9b199b917c9d4f8c8ddc633b66bfd0ca'), start:'2026-01-06', cat:'office' },
+  { name:'黑膠機唱針保養', how:'搭配唱針清潔液，將少量清潔液滴在刷子上清理', freq:'weekly', dom:null, last:'', owner:'', note:'待買唱針清潔劑', link:'https://www.tableking.com.tw/collections/vinyl-clean/products/v400501', start:'2026-01-06', cat:'office' },
+  // Monthly 1號 — admin
+  { name:'房租代扣繳費', how:'', freq:'monthly', dom:1, last:'', owner:'', note:'每月一號', link:'', start:'2026-01-01', cat:'admin' },
   // Monthly 15號
-  { name:'LG空氣清淨機清洗、飛利浦寵物清淨機、Dyson風扇、HITACHI除濕機清潔', how:'由fo同仁取出濾網轉交清潔人員用水或吸塵器將上面的灰塵清除掉，Dyson風扇擦拭外殼即可。', freq:'monthly', dom:15, last:'', owner:'fo同仁', note:'詳見辦公室家電保養，每年會更換新濾芯', link:notionLink('/208b7e4aa3748077bf90c34ab3104974'), start:'2026-01-01' },
-  { name:'常溫食材期限確認', how:'整理廚房和公區的常溫食材，標記過期日期，與Rosie確認後方可清理過期食品', freq:'monthly', dom:15, last:'', owner:'Rosie', note:'茶包、地瓜', link:'', start:'2026-01-01' },
-  { name:'食品飲料購置', how:'每月月頭盤點後陽台和廚房的存貨，15號購買所需存量', freq:'monthly', dom:15, last:'', owner:'', note:'每月預算＄2,500', link:'', start:'2026-01-01' },
-  { name:'冰箱食材清理', how:'查看冰箱食物及飲料的過期時間，將食用期限將至的食品放於前方，與Rosie確認後方可清理過期食品', freq:'monthly', dom:15, last:'', owner:'Rosie', note:'', link:'', start:'2026-01-01' },
-  { name:'庶務備品購置', how:'檢查後陽台與廚房的備品（如垃圾袋、衛生紙、一次性用品等）充足', freq:'monthly', dom:15, last:'', owner:'', note:'如有需要購買，將於每月15號購置', link:'', start:'2026-01-01' },
-  { name:'Panasonic 烤箱清潔', how:'早上使用烤箱自動清潔功能，再請清潔人員擦拭乾淨', freq:'monthly', dom:15, last:'', owner:'', note:'見辦公室家電保養', link:notionLink('/208b7e4aa3748077bf90c34ab3104974'), start:'2026-01-01' },
-  { name:'清洗貓砂盆', how:'請清潔人員（小榛）於指定假日清洗貓砂盆，於三天前請Rosie準備新貓砂', freq:'monthly', dom:15, last:'', owner:'', note:'補貓砂的數量，貓砂盆清潔劑？', link:'', start:'2026-01-01' },
-  { name:'信用卡交易整理', how:'', freq:'monthly', dom:15, last:'', owner:'', note:'定期整理', link:'', start:'2026-01-01' },
-  { name:'HF餐點憑證', how:'整理餐點憑證明細，含憑證發票編號', freq:'monthly', dom:15, last:'', owner:'', note:'含憑證發票編號', link:'', start:'2026-01-01' },
-  { name:'憑證整理', how:'', freq:'monthly', dom:15, last:'', owner:'', note:'', link:'', start:'2026-01-01' },
+  { name:'LG空氣清淨機清洗、飛利浦寵物清淨機、Dyson風扇、HITACHI除濕機清潔', how:'由fo同仁取出濾網轉交清潔人員用水或吸塵器將上面的灰塵清除掉，Dyson風扇擦拭外殼即可。', freq:'monthly', dom:15, last:'', owner:'fo同仁', note:'詳見辦公室家電保養，每年會更換新濾芯', link:notionLink('/208b7e4aa3748077bf90c34ab3104974'), start:'2026-01-01', cat:'office' },
+  { name:'常溫食材期限確認', how:'整理廚房和公區的常溫食材，標記過期日期，與Rosie確認後方可清理過期食品', freq:'monthly', dom:15, last:'', owner:'Rosie', note:'茶包、地瓜', link:'', start:'2026-01-01', cat:'office' },
+  { name:'食品飲料購置', how:'每月月頭盤點後陽台和廚房的存貨，15號購買所需存量', freq:'monthly', dom:15, last:'', owner:'', note:'每月預算＄2,500', link:'', start:'2026-01-01', cat:'office' },
+  { name:'冰箱食材清理', how:'查看冰箱食物及飲料的過期時間，將食用期限將至的食品放於前方，與Rosie確認後方可清理過期食品', freq:'monthly', dom:15, last:'', owner:'Rosie', note:'', link:'', start:'2026-01-01', cat:'office' },
+  { name:'庶務備品購置', how:'檢查後陽台與廚房的備品（如垃圾袋、衛生紙、一次性用品等）充足', freq:'monthly', dom:15, last:'', owner:'', note:'如有需要購買，將於每月15號購置', link:'', start:'2026-01-01', cat:'office' },
+  { name:'Panasonic 烤箱清潔', how:'早上使用烤箱自動清潔功能，再請清潔人員擦拭乾淨', freq:'monthly', dom:15, last:'', owner:'', note:'見辦公室家電保養', link:notionLink('/208b7e4aa3748077bf90c34ab3104974'), start:'2026-01-01', cat:'office' },
+  { name:'清洗貓砂盆', how:'請清潔人員（小榛）於指定假日清洗貓砂盆，於三天前請Rosie準備新貓砂', freq:'monthly', dom:15, last:'', owner:'', note:'補貓砂的數量，貓砂盆清潔劑？', link:'', start:'2026-01-01', cat:'office' },
+  { name:'信用卡交易整理', how:'', freq:'monthly', dom:15, last:'', owner:'', note:'定期整理', link:'', start:'2026-01-01', cat:'admin' },
+  { name:'HF餐點憑證', how:'整理餐點憑證明細，含憑證發票編號', freq:'monthly', dom:15, last:'', owner:'', note:'含憑證發票編號', link:'', start:'2026-01-01', cat:'admin' },
+  { name:'憑證整理', how:'', freq:'monthly', dom:15, last:'', owner:'', note:'', link:'', start:'2026-01-01', cat:'admin' },
   // Monthly 28號
-  { name:'媒體信箱整理', how:'', freq:'monthly', dom:28, last:'', owner:'', note:'月底處理', link:'', start:'2026-01-01' },
-  { name:'月底印清潔人員簽到單', how:'', freq:'monthly', dom:28, last:'', owner:'', note:'月底', link:'', start:'2026-01-01' },
-  // Bimonthly 7號
-  { name:'零用金帳戶執行管理', how:'', freq:'bimonthly', dom:7, last:'', owner:'', note:'雙數月後隔月七號', link:'', start:'2026-01-01' },
-  { name:'夥伴代墊憑證整理', how:'', freq:'bimonthly', dom:7, last:'', owner:'', note:'底線是單數月七號前，告知R整理好', link:'', start:'2026-01-01' },
-  // Quarterly 25號
-  { name:'檢查醫藥箱', how:'每季的當月25號，確保內用、外用醫藥用品品項齊全，處理過期藥品並添購', freq:'quarterly', dom:25, last:'2026-02-02', owner:'', note:'常備藥品', link:'https://docs.google.com/document/d/1HUEYT7eXk6eWz7-VZ3aCup8Iusq_OLBroOsgr9w0qEo/edit', start:'2026-01-01' },
-  { name:'公司周邊整理補充', how:'每季的當月25號，補充高木櫃的周邊（雨傘、毛巾、L型夾、卡套、貼紙），計算剩餘和使用的周邊數目', freq:'quarterly', dom:25, last:'2026-03-25', owner:'', note:'數量見辦公室儲物', link:notionLink('/208b7e4aa3748002861ec98a66a0f3f7'), start:'2026-01-01' },
-  { name:'公關品盤點整理', how:'每季的當月25號，盤點並評估庫存的公關品，覆核公關品表單紀錄正確。如有超出時效性或過舊不適合繼續行銷整理出來後，與行銷同仁確認後，再請Rosie判斷是否需要處理', freq:'quarterly', dom:25, last:'2026-03-25', owner:'', note:'現存公關品表單', link:'https://docs.google.com/spreadsheets/d/1d4d1GPzfsDwiWYaVS2WJ9YUMWxD0tsUm9wWR7WDYdfQ/edit', start:'2026-01-01' },
-  { name:'藍途 SW請款報告', how:'', freq:'quarterly', dom:15, last:'', owner:'', note:'應付Account', link:'', start:'2026-01-01' },
-  // Yearly
-  { name:'LG空氣清淨機、飛利浦寵物清淨機、Dyson風扇、HITACHI除濕機濾網濾芯更換', how:'於15號購入並換上濾網', freq:'yearly', dom:null, last:'2025-11-06', owner:'', note:'詳見辦公室家電保養', link:notionLink('/208b7e4aa3748077bf90c34ab3104974'), start:'2025-11-06' },
+  { name:'媒體信箱整理', how:'', freq:'monthly', dom:28, last:'', owner:'', note:'月底處理', link:'', start:'2026-01-01', cat:'admin' },
+  { name:'月底印清潔人員簽到單', how:'', freq:'monthly', dom:28, last:'', owner:'', note:'月底', link:'', start:'2026-01-01', cat:'office' },
+  // Bimonthly 7號 — admin
+  { name:'零用金帳戶執行管理', how:'', freq:'bimonthly', dom:7, last:'', owner:'', note:'雙數月後隔月七號', link:'', start:'2026-01-01', cat:'admin' },
+  { name:'夥伴代墊憑證整理', how:'', freq:'bimonthly', dom:7, last:'', owner:'', note:'底線是單數月七號前，告知R整理好', link:'', start:'2026-01-01', cat:'admin' },
+  // Quarterly
+  { name:'檢查醫藥箱', how:'每季的當月25號，確保內用、外用醫藥用品品項齊全，處理過期藥品並添購', freq:'quarterly', dom:25, last:'2026-02-02', owner:'', note:'常備藥品', link:'https://docs.google.com/document/d/1HUEYT7eXk6eWz7-VZ3aCup8Iusq_OLBroOsgr9w0qEo/edit', start:'2026-01-01', cat:'office' },
+  { name:'公司周邊整理補充', how:'每季的當月25號，補充高木櫃的周邊（雨傘、毛巾、L型夾、卡套、貼紙），計算剩餘和使用的周邊數目', freq:'quarterly', dom:25, last:'2026-03-25', owner:'', note:'數量見辦公室儲物', link:notionLink('/208b7e4aa3748002861ec98a66a0f3f7'), start:'2026-01-01', cat:'office' },
+  { name:'公關品盤點整理', how:'每季的當月25號，盤點並評估庫存的公關品，覆核公關品表單紀錄正確。如有超出時效性或過舊不適合繼續行銷整理出來後，與行銷同仁確認後，再請Rosie判斷是否需要處理', freq:'quarterly', dom:25, last:'', owner:'', note:'現存公關品表單', link:'https://docs.google.com/spreadsheets/d/1d4d1GPzfsDwiWYaVS2WJ9YUMWxD0tsUm9wWR7WDYdfQ/edit', start:'2026-01-01', cat:'admin' },
+  { name:'藍途 SW請款報告', how:'', freq:'quarterly', dom:15, last:'', owner:'', note:'應付Account', link:'', start:'2026-01-01', cat:'admin' },
+  // Yearly — office
+  { name:'LG空氣清淨機、飛利浦寵物清淨機、Dyson風扇、HITACHI除濕機濾網濾芯更換', how:'於15號購入並換上濾網', freq:'yearly', dom:null, last:'2025-11-06', owner:'', note:'詳見辦公室家電保養', link:notionLink('/208b7e4aa3748077bf90c34ab3104974'), start:'2025-11-06', cat:'office' },
 ];
 
 // ═══════════════════════════════════════
@@ -517,7 +517,7 @@ function supplementDefaults() {
       changed = true;
     } else {
       // Task exists — fill in any blank fields from default
-      ['how','note','link','owner','dom','start'].forEach(field => {
+      ['how','note','link','owner','dom','start','cat'].forEach(field => {
         if (!match[field] && dt[field]) {
           match[field] = dt[field];
           changed = true;
@@ -787,20 +787,20 @@ function renderTodayBanner() {
     if (t.startDate && t.startDate > todayStr) return;
     // 今天完成的：顯示一天
     if (t.done && t.doneDate === todayStr) {
-      mainLine.push({ name: t.name, done: true, overdue: false, deadline: t.deadline||'', nextAction: '', result: t.result||'' });
+      mainLine.push({ name: t.name, done: true, overdue: false, deadline: t.deadline||'', nextAction: t.nextAction||'', result: t.result||'', isR: !!t.isR });
       return;
     }
     if (t.done) return;
     if (t.deadline) {
       const dl = parseDate(t.deadline);
       const overdue = dl < today;
-      mainLine.push({ name: t.name, done: false, overdue, deadline: t.deadline, nextAction: t.nextAction || '', result: t.result||'' });
+      mainLine.push({ name: t.name, done: false, overdue, deadline: t.deadline, nextAction: t.nextAction || '', result: t.result||'', isR: !!t.isR });
     }
   });
 
-  // ── 支線：需同步給同事的例行任務（非每天/每兩天）──
-  const sideLine = [];
-  // ── 庶務：每天/每兩天的例行任務 + 庶務待辦 ──
+  // ── 辦公室 / 非辦公室 / 庶務 ──
+  const officeLine = [];
+  const adminLine = [];
   const choreLine = [];
 
   data.tasks.forEach(task => {
@@ -810,29 +810,30 @@ function renderTodayBanner() {
       const item = { name: task.name, done };
       if (task.freq === 'daily' || task.freq === 'every2days') {
         choreLine.push(item);
+      } else if (task.cat === 'admin') {
+        adminLine.push(item);
       } else {
-        sideLine.push(item);
+        officeLine.push(item);
       }
     });
   });
-  // 庶務待辦歸到庶務
   data.todos.filter(t => !t.done && (!t.dueDate || t.dueDate <= todayStr)).forEach(t => {
     choreLine.push({ name: t.name || '（未命名待辦）', done: false });
   });
 
   let html = '';
   // 主線（point form）
-  html += '<div class="today-section"><div class="today-section-label">⭐ 主線任務</div>';
-  if (mainLine.length === 0) html += '<div class="today-tasks-list"><span class="today-none">目前沒有主線任務 🐾</span></div>';
+  html += '<div class="today-section"><div class="today-section-label">主線任務</div>';
+  if (mainLine.length === 0) html += '<div class="today-tasks-list"><span class="today-none">目前沒有主線任務</span></div>';
   else {
     html += '<div style="margin-top:4px;">';
     mainLine.forEach(t => {
-      const dlLabel = t.deadline ? formatDateShort(parseDate(t.deadline)) : '';
-      const prefix = t.done ? '✅ ' : (t.overdue ? '⏰ ' : '• ');
+      const dlLabel = t.deadline ? formatDateShort(parseDate(t.deadline)) + (t.isR ? '(R)' : '') : '';
+      const prefix = t.done ? '[done] ' : (t.overdue ? '[overdue] ' : '- ');
       const actionText = t.nextAction ? esc(t.nextAction) : '<span style="opacity:0.5;font-style:italic;">（未設定下一步）</span>';
       html += `<div style="margin-bottom:5px;${t.done?'opacity:0.7;':''}">
         <div style="font-size:12px;font-weight:700;${t.done?'text-decoration:line-through;':''}">${prefix}${esc(t.name)}</div>
-        <div style="margin-left:16px;font-size:11px;opacity:0.9;">${dlLabel} — ${actionText}</div>
+        <div style="margin-left:16px;font-size:11px;opacity:0.9;">${dlLabel} -- ${actionText}</div>
       </div>`;
     });
     html += '</div>';
@@ -841,10 +842,20 @@ function renderTodayBanner() {
 
   html += '<div class="today-divider"></div>';
 
-  // 支線
-  html += '<div class="today-section"><div class="today-section-label">📋 支線任務</div><div class="today-tasks-list">';
-  if (sideLine.length === 0) html += '<span class="today-none">今天沒有支線任務 🐾</span>';
-  else sideLine.forEach(t => {
+  // 辦公室
+  html += '<div class="today-section"><div class="today-section-label">辦公室</div><div class="today-tasks-list">';
+  if (officeLine.length === 0) html += '<span class="today-none">今天沒有辦公室任務</span>';
+  else officeLine.forEach(t => {
+    html += `<div class="today-task-chip ${t.done?'completed':''}">${esc(t.name)}</div>`;
+  });
+  html += '</div></div>';
+
+  html += '<div class="today-divider"></div>';
+
+  // 非辦公室
+  html += '<div class="today-section"><div class="today-section-label">非辦公室</div><div class="today-tasks-list">';
+  if (adminLine.length === 0) html += '<span class="today-none">今天沒有非辦公室任務</span>';
+  else adminLine.forEach(t => {
     html += `<div class="today-task-chip ${t.done?'completed':''}">${esc(t.name)}</div>`;
   });
   html += '</div></div>';
@@ -852,8 +863,8 @@ function renderTodayBanner() {
   html += '<div class="today-divider"></div>';
 
   // 庶務
-  html += '<div class="today-section"><div class="today-section-label">🧹 庶務</div><div class="today-tasks-list">';
-  if (choreLine.length === 0) html += '<span class="today-none">今天沒有庶務 🐾</span>';
+  html += '<div class="today-section"><div class="today-section-label">庶務</div><div class="today-tasks-list">';
+  if (choreLine.length === 0) html += '<span class="today-none">今天沒有庶務</span>';
   else choreLine.forEach(t => {
     html += `<div class="today-task-chip ${t.done?'completed':''}">${esc(t.name)}</div>`;
   });
@@ -1119,7 +1130,7 @@ function renderMainTasks() {
     const notStarted = t.startDate && t.startDate > todayStr;
 
     // Deadline display
-    let dlClass = '', dlText = t.deadline ? formatDateShort(dl) : '—';
+    let dlClass = '', dlText = t.deadline ? formatDateShort(dl) + (t.isR ? '(R)' : '') : '—';
     if (dlDiff < 0) { dlClass = 'next-overdue'; dlText = '⏰ ' + dlText; }
     else if (dlDiff === 0) { dlClass = 'next-today'; dlText = '🔴 今天'; }
     else if (dlDiff <= 3) { dlClass = 'next-soon'; }
@@ -1137,7 +1148,8 @@ function renderMainTasks() {
       <td><span class="${stClass}" style="font-size:11px;">${stText}</span>
         <input type="date" class="date-input" value="${t.startDate||''}" onchange="updateMain(${t.id},'startDate',this.value)" style="width:95px;font-size:10px;"></td>
       <td><span class="${dlClass}" style="font-size:11px;">${dlText}</span>
-        <input type="date" class="date-input" value="${t.deadline||''}" onchange="updateMain(${t.id},'deadline',this.value)" style="width:95px;font-size:10px;"></td>
+        <input type="date" class="date-input" value="${t.deadline||''}" onchange="updateMain(${t.id},'deadline',this.value)" style="width:95px;font-size:10px;">
+        <label style="font-size:9px;color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;gap:2px;margin-top:1px;"><input type="checkbox" ${t.isR?'checked':''} onchange="updateMain(${t.id},'isR',this.checked)" style="width:12px;height:12px;accent-color:var(--warn);">(R)</label></td>
       <td><div class="editable" style="font-size:12px;font-weight:600;color:var(--accent-hover);" contenteditable="true" onfocus="this.innerHTML=esc(this.getAttribute('data-raw')||'')" onblur="this.setAttribute('data-raw',this.textContent);updateMain(${t.id},'nextAction',this.textContent);this.innerHTML=linkify(this.textContent)" data-raw="${esc(t.nextAction||'')}">${linkify(t.nextAction||'')}</div></td>
       <td class="todo-col-note"><div class="editable" contenteditable="true" onfocus="this.innerHTML=esc(this.getAttribute('data-raw')||'')" onblur="this.setAttribute('data-raw',this.textContent);updateMain(${t.id},'note',this.textContent);this.innerHTML=linkify(this.textContent)" data-raw="${esc(t.note||'')}">${linkify(t.note||'')}</div></td>
       <td class="todo-col-del"><button class="del-btn" onclick="deleteMain(${t.id})" style="opacity:1">&times;</button></td>
@@ -1158,7 +1170,9 @@ function addMainTask() {
 }
 
 function updateMain(id,field,value) {
-  const t=data.mainTasks.find(x=>x.id===id);if(!t)return;t[field]=(value||'').trim();saveData();renderAll();
+  const t=data.mainTasks.find(x=>x.id===id);if(!t)return;
+  t[field] = typeof value === 'boolean' ? value : (value||'').trim();
+  saveData();renderAll();
 }
 
 function mainDone(id) {
