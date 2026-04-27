@@ -1253,6 +1253,9 @@ function renderCalendar() {
     const isToday = sameDay(cellDate,today);
     const key = toDateStr(cellDate);
     const items = occMap[key]||[];
+    // Sort: 主線 → 頻率由低到高（每年→每季→隔月→每月→每週→每兩天→每天）→ 庶務
+    const FREQ_RANK = { main:0, 'main-start':0, yearly:1, quarterly:2, bimonthly:3, monthly:4, weekly:5, every2days:6, daily:7, todo:8, overdue:8 };
+    items.sort((a,b) => (FREQ_RANK[a.freq]??99) - (FREQ_RANK[b.freq]??99));
     let cls = 'cal-cell';
     if(isOutside)cls+=' outside'; if(isToday)cls+=' today';
 
@@ -1341,7 +1344,7 @@ function showDayPopup(dateStr) {
     effs.forEach(e => {
       const done = isCompleted(task.id, toDateStr(e.date));
       const fc = FREQ_COLORS[task.freq] || FREQ_COLORS.monthly;
-      items.push({ name: task.name, tag: FREQ_LABELS[task.freq], tagBg: fc.bg, tagColor: fc.text, dotColor: fc.text, done });
+      items.push({ name: task.name, freq: task.freq, tag: FREQ_LABELS[task.freq], tagBg: fc.bg, tagColor: fc.text, dotColor: fc.text, done });
     });
   });
   (data.mainTasks||[]).forEach(t => {
@@ -1352,16 +1355,19 @@ function showDayPopup(dateStr) {
     if(showDates.includes(dateStr)) {
       const isDeadline = dateStr === t.deadline;
       const overdue = dl < today && isDeadline;
-      items.push({ name: t.name, tag: isDeadline ? (overdue ? '⏰ 截止' : '截止日') : '開始日', tagBg: overdue ? '#FEE2E2' : '#DBEAFE', tagColor: overdue ? '#DC2626' : '#1E40AF', dotColor: overdue ? '#DC2626' : '#3B82F6', done: false });
+      items.push({ name: t.name, freq: 'main', tag: isDeadline ? (overdue ? '⏰ 截止' : '截止日') : '開始日', tagBg: overdue ? '#FEE2E2' : '#DBEAFE', tagColor: overdue ? '#DC2626' : '#1E40AF', dotColor: overdue ? '#DC2626' : '#3B82F6', done: false });
     }
   });
   data.todos.forEach(t => {
     if(t.done) return;
     const dateKey = t.dueDate || todayStr;
     if(dateKey === dateStr) {
-      items.push({ name: t.name || '（待辦）', tag: '庶務', tagBg: '#FFF3E0', tagColor: '#E65100', dotColor: '#E65100', done: false });
+      items.push({ name: t.name || '（待辦）', freq: 'todo', tag: '庶務', tagBg: '#FFF3E0', tagColor: '#E65100', dotColor: '#E65100', done: false });
     }
   });
+  // 排序：主線 → 頻率由低到高 → 庶務
+  const POPUP_RANK = { main:0, yearly:1, quarterly:2, bimonthly:3, monthly:4, weekly:5, every2days:6, daily:7, todo:8 };
+  items.sort((a,b) => (POPUP_RANK[a.freq]??99) - (POPUP_RANK[b.freq]??99));
   const dow = ['日','一','二','三','四','五','六'];
   const dateLabel = `${d.getFullYear()} 年 ${d.getMonth()+1} 月 ${d.getDate()} 日（${dow[d.getDay()]}）`;
   let bodyHtml = '';
