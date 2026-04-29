@@ -490,16 +490,6 @@ function loadData() {
       if (!data.nextMid) data.nextMid = 1;
       // 清除舊的 deletedDefaults 欄位（已不再使用）
       if (data.deletedDefaults) { delete data.deletedDefaults; saveData(); }
-      // 自動去除重複任務（同名同頻率視為重複，保留第一個）
-      const seen = new Set();
-      const before = data.tasks.length;
-      data.tasks = data.tasks.filter(t => {
-        const k = (t.name||'') + '|' + (t.freq||'');
-        if (seen.has(k)) return false;
-        seen.add(k);
-        return true;
-      });
-      if (data.tasks.length !== before) saveData();
       return;
     } catch(e) {}
   }
